@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchData} from "../redux/data/dataActions";
-import * as s from "../styles/globalStyles";
-import {connect} from "../redux/blockchain/blockchainActions";
-import {ResponsiveWrapper, StyledButton, StyledRoundButton} from "./styleComponent";
+import {fetchData} from "../../redux/data/dataActions";
+import * as s from "../../styles/globalStyles";
+import {connect} from "../../redux/blockchain/blockchainActions";
+import {ResponsiveWrapper, StyledButton, StyledLink, StyledRoundButton, truncate} from "./styleComponent";
 
 const MintBox = () => {
   const dispatch = useDispatch();
@@ -109,18 +109,12 @@ const MintBox = () => {
         flex={2}
         jc={"center"}
         ai={"center"}
-        style={{
-          backgroundColor: "var(--accent)",
-          padding: 24,
-          borderRadius: 24,
-          border: "4px dashed var(--secondary)",
-          boxShadow: "0px 5px 11px 2px rgba(0,0,0,0.7)",
-        }}
       >
         <s.TextTitle
           style={{
+            fontFamily: "cyperpunk, sans-serif",
             textAlign: "center",
-            fontSize: 50,
+            fontSize: "clamp(40px, 3vw, 50px)",
             fontWeight: "bold",
             color: "var(--accent-text)",
           }}
@@ -137,7 +131,6 @@ const MintBox = () => {
             {truncate(CONFIG.CONTRACT_ADDRESS, 15)}
           </StyledLink>
         </s.TextDescription>
-        <s.SpacerSmall/>
         {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
           <>
             <s.TextTitle
@@ -156,7 +149,6 @@ const MintBox = () => {
             >
               You can still find {CONFIG.NFT_NAME} on
             </s.TextDescription>
-            <s.SpacerSmall/>
             <StyledLink target={"_blank"} href={CONFIG.MARKETPLACE_LINK}>
               {CONFIG.MARKETPLACE}
             </StyledLink>
@@ -172,7 +164,6 @@ const MintBox = () => {
               1 {CONFIG.SYMBOL} costs {CONFIG.DISPLAY_COST}{" "}
               {CONFIG.NETWORK.SYMBOL}.
             </s.TextTitle>
-            <s.SpacerXSmall/>
             <s.TextDescription
               style={{
                 textAlign: "center",
@@ -181,7 +172,6 @@ const MintBox = () => {
             >
               Excluding gas fees.
             </s.TextDescription>
-            <s.SpacerSmall/>
             {blockchain.account === "" ||
             blockchain.smartContract === null ? (
               <s.Container ai={"center"} jc={"center"}>
@@ -193,19 +183,8 @@ const MintBox = () => {
                 >
                   Connect to the {CONFIG.NETWORK.NAME} network
                 </s.TextDescription>
-                <s.SpacerSmall/>
-                <StyledButton
-                  onClick={(e) => {
-                    e.preventDefault();
-                    dispatch(connect());
-                    getData();
-                  }}
-                >
-                  CONNECT
-                </StyledButton>
                 {blockchain.errorMsg !== "" ? (
                   <>
-                    <s.SpacerSmall/>
                     <s.TextDescription
                       style={{
                         textAlign: "center",
@@ -272,6 +251,7 @@ const MintBox = () => {
                     {claimingNft ? "BUSY" : "BUY"}
                   </StyledButton>
                 </s.Container>
+                <s.SpacerSmall/>
               </>
             )}
           </>

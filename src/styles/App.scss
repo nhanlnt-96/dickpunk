@@ -1,0 +1,185 @@
+@import "./rwd";
+
+@font-face {
+  font-family: "cyperpunk";
+  src: url(Cybrpnuk2.woff) format("woff");
+}
+
+.main {
+  width: 100vw;
+  min-height: 100vh;
+  background: url("../assets/img/bg.png") no-repeat center;
+  background-size: cover;
+
+  &-container {
+    width: 100%;
+    min-height: calc(100vh - 140px);
+    padding: 12px 0;
+  }
+
+  &-logo {
+    width: 100%;
+
+    &__container {
+      //width: 70px;
+      height: 70px;
+      //border-radius: 100%;
+      padding-right: 0;
+      padding-left: 0;
+      //overflow: hidden;
+
+      .logo-content {
+        text-align: center;
+        text-transform: uppercase;
+        font-family: cyperpunk, sans-serif;
+        padding: 5px;
+        background: rgb(251, 175, 59);
+        font-size: clamp(30px, 5vw, 40px);
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  @include mobile {
+    &-container {
+      min-height: unset;
+    }
+    &-logo {
+      margin-left: 0;
+    }
+    .main .container {
+      padding-right: 0;
+      padding-left: 0;
+    }
+    &-left__side {
+      order: 2;
+    }
+    &-right__side {
+      order: 1;
+    }
+  }
+  @include tablet {
+    &-container {
+      min-height: unset;
+    }
+    &-left__side {
+      order: 2;
+    }
+    &-right__side {
+      order: 1;
+    }
+  }
+}
+
+.left-side__container {
+  width: 100%;
+  min-height: 350px;
+  background: url("../assets/img/mintBoxBorderWithBgColor.png") no-repeat center;
+  background-size: 100% 100%;
+
+  .left-side__title {
+    color: #ffffff;
+    font-size: clamp(20px, 5vw, 35px);
+    text-align: center;
+    margin-bottom: 24px;
+    font-weight: bold;
+    font-family: cyperpunk, sans-serif;
+  }
+
+  @include mobile {
+    min-height: 250px;
+  }
+}
+
+.primary-btn {
+  outline: none;
+  border: none;
+  width: 200px;
+  background: rgb(251, 175, 59);
+  background: linear-gradient(90deg, rgba(251, 175, 59, 1) 27%, rgba(252, 238, 22, 1) 64%);
+  padding: 12px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  transition: .5s linear;
+
+  &:hover {
+    background: rgb(251, 175, 59);
+    color: #000000;
+  }
+}
+
+.right-side__container {
+  width: 300px;
+  height: 300px;
+  border-radius: 100%;
+  background: rgb(251, 175, 59);
+  background: linear-gradient(90deg, rgba(251, 175, 59, 1) 27%, rgba(252, 238, 22, 1) 64%);
+
+  img {
+    width: 95%;
+    height: 95%;
+    border-radius: 100%;
+    object-fit: cover;
+  }
+
+  @include mobile {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 24px;
+  }
+  @include tablet {
+    margin-bottom: 24px;
+    margin-top: 24px;
+  }
+}
+
+.main-footer {
+  .primary-btn:first-child {
+    margin-right: 12px;
+  }
+
+  @include mobile {
+    flex-direction: column;
+    margin-bottom: 12px;
+    margin-top: 24px;
+    .primary-btn:first-child {
+      margin-right: unset;
+      margin-bottom: 12px;
+    }
+  }
+  @include tablet {
+    margin-top: 24px;
+  }
+}
+
+@keyframes buttonHover {
+  0% {
+    background: linear-gradient(90deg, rgba(251, 175, 59, 1) 27%, rgba(252, 238, 22, 1) 64%);
+  }
+  20% {
+    background: linear-gradient(90deg, rgba(251, 175, 59, 1) 45%, rgba(252, 238, 22, 1) 100%);
+  }
+  40% {
+    background: linear-gradient(90deg, rgba(251, 175, 59, 1) 63%, rgba(252, 238, 22, 1) 100%);
+  }
+  60% {
+    background: linear-gradient(90deg, rgba(251, 175, 59, 1) 81%, rgba(252, 238, 22, 1) 100%);
+  }
+  80% {
+    background: linear-gradient(90deg, rgba(251, 175, 59, 1) 99%, rgba(252, 238, 22, 1) 100%);
+  }
+  100% {
+    background: linear-gradient(90deg, rgba(251, 175, 59, 1) 100%, rgba(252, 238, 22, 1) 100%);
+  }
+}

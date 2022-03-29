@@ -4,13 +4,13 @@ export const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
 
 export const StyledButton = styled.button`
-  padding: 10px;
-  border-radius: 50px;
+  outline: none;
   border: none;
-  background-color: var(--secondary);
+  background: rgb(251, 175, 59);
+  background: linear-gradient(90deg, rgba(251, 175, 59, 1) 27%, rgba(252, 238, 22, 1) 64%);
+  border-radius: 50px;
   padding: 10px;
   font-weight: bold;
-  color: var(--secondary-text);
   width: 100px;
   cursor: pointer;
   box-shadow: 0px 6px 0px -2px rgba(250, 250, 250, 0.3);
